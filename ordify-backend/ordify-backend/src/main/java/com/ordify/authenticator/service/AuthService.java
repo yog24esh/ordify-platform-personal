@@ -61,8 +61,13 @@ public class AuthService {
         }
 
         String token = jwtUtil.generateToken(user.getEmail());
-        return ResponseEntity.ok(new AuthResponse(token));
+
+        // Return token + userId + role
+        return ResponseEntity.ok(
+                new AuthResponse(token, user.getUserId(), user.getRole().getRoleName())
+        );
     }
+
 
     // ================= FORGOT PASSWORD =================
     public SecurityQuestionResponse getSecurityQuestion(String email) {
