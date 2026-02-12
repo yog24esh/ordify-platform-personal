@@ -10,7 +10,6 @@
 ```bash
 git clone <repo-url>
 cd ordify-backend
-Have to add .env.dev file, due to security reason not commited
 
     Build & run using Docker Compose
 
