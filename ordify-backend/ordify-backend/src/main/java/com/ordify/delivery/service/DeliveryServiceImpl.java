@@ -110,8 +110,15 @@ public class DeliveryServiceImpl implements DeliveryService {
         log.setLatitude(dto.getLatitude());
         log.setLongitude(dto.getLongitude());
         log.setLoggedAt(LocalDateTime.now());
-
         locationLogRepository.save(log);
+
+        DeliveryPartner partner = partnerRepository.findById(dto.getDeliveryPartnerId())
+                .orElseThrow(() -> new RuntimeException("Partner not found"));
+        partner.setCurrentLatitude(dto.getLatitude());
+        partner.setCurrentLongitude(dto.getLongitude());
+        partnerRepository.save(partner);
+        
+        
     }
 
     @Override
