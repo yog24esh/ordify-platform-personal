@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ordify-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ordify-backend
+  template:
+    metadata:
+      labels:
+        app: ordify-backend
+    spec:
+      containers:
+        - name: backend
+          image: ordify-backend:1.0
+          imagePullPolicy: Never
+          env:
+            - name: DB_URL
+              value: jdbc:mysql://mysql:3306/ordify
+            - name: DB_USER
+              value: root
+            - name: DB_PASS
+              value: root
+          ports:
+            - containerPort: 8080
