@@ -100,7 +100,12 @@ docker-compose up -d --build
 
 Access API  
 
-http://<EC2_PUBLIC_IP>:8080/delivery  
+http://13.232.2.165:8080/delivery  
+
+APIs-
+1. http://13.232.2.165:8080/api/products/1
+2. http://13.232.2.165:8080/api/darkstores/1
+3. http://13.232.2.165:8080/api/inventory/1
 
 💡 Stop the EC2 instance when not in use to control cost.  
 
